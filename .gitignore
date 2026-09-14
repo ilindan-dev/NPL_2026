@@ -1,0 +1,80 @@
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+*~
+.directory
+.fuse_hidden*
+
+bin/
+build/
+out/
+*.o
+*.a
+*.so
+*.log
+*.sqlite
+*.csv
+.env
+
+# Rust
+target/
+
+# Nim
+nimcache/
+
+# D
+.dub/
+
+# Elixir / Erlang
+_build/
+deps/
+erl_crash.dump
+*.beam
+
+# Haskell
+dist/
+dist-newstyle/
+*.hi
+
+# Prolog
+*.qlf
+
+# OCaml
+*.cmi
+*.cmo
+*.cmx
+*.cmt
+*.cmti
+
+# F# / Kotlin / Scala / Groovy / Clojure (JVM & .NET)
+obj/
+*.class
+*.jar
+.gradle/
+.bloop/
+.metals/
+.cpcache/
+
+# Zig
+zig-cache/
+zig-out/
+
+# Swift
+.build/
+
+# Ruby
+.bundle/
+vendor/bundle/
+
+# Lua
+luac.out
+
+# Julia
+.CondaPkg/
+Manifest.toml
+
+# Perl
+local/
