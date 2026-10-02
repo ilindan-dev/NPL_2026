@@ -162,7 +162,7 @@ proc main() =
   echo ""
   echo "===== ИТОГ ====="
   echo "Чтений всего:                    ", totalReads
-  echo "Записей: писатель 0 — ", writeCount[0], ", писатель 1 — ", writeCount[1]
+  echo "Записей: писатель 0 - ", writeCount[0], ", писатель 1 - ", writeCount[1]
   echo "Итоговая версия конфига:         ", snapshot().v
   echo "Несогласованных чтений:          ", totalBad
   if useLock:
