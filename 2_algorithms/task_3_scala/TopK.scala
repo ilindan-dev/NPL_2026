@@ -3,9 +3,9 @@
 // Задача 2.3 (Scala): Top K Frequent Elements (LeetCode 347).
 // Найти k самых часто встречающихся элементов массива.
 //
-// Основное решение — цепочка методов коллекций без изменяемого состояния:
+// Основное решение - цепочка методов коллекций без изменяемого состояния:
 //   группировка -> подсчёт -> сортировка по частоте -> первые k.
-// Дополнительно — "блочная сортировка" за O(n), как просит follow-up в LeetCode.
+// Дополнительно - "блочная сортировка" за O(n), как просит follow-up в LeetCode.
 //
 // Запуск: scala-cli run TopK.scala -- [k] [числа...]
 
@@ -14,11 +14,11 @@ def topKFrequent(nums: Seq[Int], k: Int): Seq[Int] =
   nums
     .groupMapReduce(identity)(_ => 1)(_ + _) // Map(число -> сколько раз встретилось)
     .toSeq
-    .sortBy((num, count) => (-count, num))   // по убыванию частоты, при равенстве — по значению
+    .sortBy((num, count) => (-count, num))   // по убыванию частоты, при равенстве - по значению
     .take(k)
     .map(_._1)
 
-/** Вариант за O(n): bucket sort по частоте. buckets(c) — числа, встретившиеся c раз. */
+/** Вариант за O(n): bucket sort по частоте. buckets(c) - числа, встретившиеся c раз. */
 def topKFrequentBuckets(nums: Seq[Int], k: Int): Seq[Int] =
   val freq = nums.groupMapReduce(identity)(_ => 1)(_ + _)
   val buckets = Vector.tabulate(nums.length + 1)(c => freq.collect { case (n, `c`) => n }.toSeq.sorted)
