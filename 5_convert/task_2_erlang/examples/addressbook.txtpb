@@ -1,0 +1,12 @@
+# AddressBook: repeated-поле с вложенными сообщениями
+people {
+  name: "Алиса"
+  id: 1
+  phones { number: "111" type: HOME }
+}
+people {
+  name: "Боб"
+  id: 2
+  is_active: false
+  phones { number: "222" type: 2 }   # enum можно задать и номером
+}

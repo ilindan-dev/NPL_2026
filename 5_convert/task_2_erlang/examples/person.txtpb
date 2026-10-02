@@ -1,0 +1,20 @@
+# Сообщение Person в текстовом формате Protobuf
+name: "Алиса Иванова"
+id: 1234
+email: "alice@example.com"
+phones {
+  number: "+7 999 123-45-67"
+  type: MOBILE
+}
+phones { number: "+7 495 000-00-00", type: WORK }
+tags: ["студент", "NPL"]
+tags: "\"кавычки\" в строке"
+is_active: true
+balance: 1500.75
+last_login_ms: 1790000000000
+avatar: "PNG..."
+home_address {
+  city: "Москва"
+  street: "ул. Ленина, 10"
+  zip_code: 101000
+}
