@@ -1,15 +1,15 @@
 // Задача 4.4 (Swift): удалённый мониторинг состояния системы.
 //
 // Клиент отправляет запрос на сервер, сервер собирает РЕАЛЬНУЮ статистику
-// (загрузка CPU, память, load average, uptime — из /proc) и возвращает
+// (загрузка CPU, память, load average, uptime - из /proc) и возвращает
 // отформатированный отчёт.
 //
 // Network.framework есть только на платформах Apple, а программа работает в Linux-контейнере,
-// поэтому сеть сделана на POSIX-сокетах (socket/bind/listen/accept) — это тот же
+// поэтому сеть сделана на POSIX-сокетах (socket/bind/listen/accept) - это тот же
 // системный API, поверх которого построен и Network.framework.
 //
-// Протокол — текстовый: клиент шлёт команду строкой, сервер отвечает строками,
-// последняя строка ответа — END.
+// Протокол - текстовый: клиент шлёт команду строкой, сервер отвечает строками,
+// последняя строка ответа - END.
 //   ALL | CPU | MEM | LOAD | UPTIME | QUIT
 //
 // Запуск:  monitor server [порт]
@@ -158,7 +158,7 @@ final class LineReader {
 func makeAddress(_ ip: String, _ port: UInt16) -> sockaddr_in {
     var addr = sockaddr_in()
     addr.sin_family = sa_family_t(AF_INET)
-    addr.sin_port = port.bigEndian                 // порядок байт сети — big-endian
+    addr.sin_port = port.bigEndian                 // порядок байт сети - big-endian
     guard inet_pton(AF_INET, ip, &addr.sin_addr) == 1 else { fail("неверный IPv4-адрес \(ip)") }
     return addr
 }
@@ -183,7 +183,7 @@ func handle(_ fd: Int32, _ name: String) {
 }
 
 func runServer(port: UInt16) {
-    signal(SIGPIPE, SIG_IGN)                         // запись в закрытый сокет — не убивать процесс
+    signal(SIGPIPE, SIG_IGN)                         // запись в закрытый сокет - не убивать процесс
     let fd = socket(AF_INET, Int32(SOCK_STREAM.rawValue), 0)
     guard fd >= 0 else { fail("socket()") }
     var yes: Int32 = 1
@@ -195,7 +195,7 @@ func runServer(port: UInt16) {
             bind(fd, $0, socklen_t(MemoryLayout<sockaddr_in>.size))
         }
     }
-    guard rc == 0 else { fail("bind() — порт \(port) занят?") }
+    guard rc == 0 else { fail("bind() - порт \(port) занят?") }
     guard listen(fd, 16) == 0 else { fail("listen()") }
     logMsg("Сервер мониторинга запущен на порту \(port)")
 
@@ -221,10 +221,10 @@ func runClient(host: String, port: UInt16, command: String?) {
             connect(fd, $0, socklen_t(MemoryLayout<sockaddr_in>.size))
         }
     }
-    guard rc == 0 else { fail("не удалось подключиться к \(host):\(port) — сервер запущен?") }
+    guard rc == 0 else { fail("не удалось подключиться к \(host):\(port) - сервер запущен?") }
 
     let reader = LineReader(fd)
-    /// Печатает ответ до строки END. false — соединение закрыто.
+    /// Печатает ответ до строки END. false - соединение закрыто.
     func printResponse() -> Bool {
         while let line = reader.next() {
             if line == "END" { return true }
@@ -241,7 +241,7 @@ func runClient(host: String, port: UInt16, command: String?) {
             sendAll(fd, "ALL\n")
             print("\u{1B}[2J\u{1B}[H", terminator: "")        // очистить экран
             if !printResponse() { break }
-            print("\n(обновление каждые 2 с, Ctrl+C — выход)")
+            print("\n(обновление каждые 2 с, Ctrl+C - выход)")
             fflush(stdout)
             sleep(2)
         }
