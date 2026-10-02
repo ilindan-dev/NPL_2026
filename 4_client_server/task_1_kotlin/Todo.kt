@@ -1,10 +1,10 @@
 // Задача 4.1 (Kotlin): синхронизация общего списка задач (To-Do) в реальном времени.
 //
 // Сервер хранит список задач в памяти. Клиенты подключаются по TCP и шлют команды:
-//   ADD <текст>    — добавить задачу
-//   REMOVE <id>    — удалить задачу
-//   LIST           — получить список
-//   QUIT           — отключиться
+//   ADD <текст>    - добавить задачу
+//   REMOVE <id>    - удалить задачу
+//   LIST           - получить список
+//   QUIT           - отключиться
 // При ЛЮБОМ изменении сервер рассылает обновлённый список ВСЕМ подключённым клиентам.
 //
 // Запуск:  java -jar todo.jar server [порт]
@@ -66,7 +66,7 @@ class TodoServer(private val port: Int) {
         try {
             val input = BufferedReader(InputStreamReader(c.socket.getInputStream(), Charsets.UTF_8))
             while (true) {
-                val line = input.readLine() ?: break        // null — клиент закрыл соединение
+                val line = input.readLine() ?: break        // null - клиент закрыл соединение
                 val parts = line.trim().split(" ", limit = 2)
                 val cmd = parts[0].uppercase()
                 val arg = parts.getOrElse(1) { "" }.trim()
@@ -91,7 +91,7 @@ class TodoServer(private val port: Int) {
                 }
             }
         } catch (e: IOException) {
-            // клиент оборвал соединение — просто отключаем его
+            // клиент оборвал соединение - просто отключаем его
         } finally {
             clients -= c
             c.socket.close()
@@ -99,7 +99,7 @@ class TodoServer(private val port: Int) {
         }
     }
 
-    /** Широковещательная рассылка: событие + актуальный список — всем клиентам. */
+    /** Широковещательная рассылка: событие + актуальный список - всем клиентам. */
     private fun broadcast(event: String) {
         log(event)
         val msg = ">>> $event\n" + render()
@@ -125,7 +125,7 @@ fun runClient(host: String, port: Int) {
     val socket = try {
         Socket(host, port)
     } catch (e: IOException) {
-        println("Не удалось подключиться к $host:$port — сервер запущен?")
+        println("Не удалось подключиться к $host:$port - сервер запущен?")
         exitProcess(1)
     }
     val out = PrintWriter(OutputStreamWriter(socket.getOutputStream(), Charsets.UTF_8), true)

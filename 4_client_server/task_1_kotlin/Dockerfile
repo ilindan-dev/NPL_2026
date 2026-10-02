@@ -1,4 +1,4 @@
-# Официального образа с kotlinc нет — скачиваем компилятор с GitHub на этапе сборки
+# Официального образа с kotlinc нет - скачиваем компилятор с GitHub на этапе сборки
 FROM eclipse-temurin:21-jdk AS build
 RUN apt-get update && apt-get install -y --no-install-recommends curl unzip \
     && rm -rf /var/lib/apt/lists/*
