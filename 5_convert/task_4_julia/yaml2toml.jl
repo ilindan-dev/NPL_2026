@@ -73,7 +73,7 @@ end
 
 is_item(t) = startswith(t, "- ") || t == "-"
 
-# "- key: value" — начинается ли элемент списка со словаря
+# "- key: value" - начинается ли элемент списка со словаря
 is_map_start(t) = occursin(r"^(\"[^\"]*\"|'[^']*'|[^\"'\[{][^:]*?):(\s|$)", t)
 
 # Блок на данном отступе: список или словарь
@@ -269,7 +269,7 @@ is_table_array(v) = v isa AbstractVector && !isempty(v) && all(x -> x isa OMap, 
 function write_table(io::IO, m::OMap, path::Vector{String})
     for (k, v) in m.pairs
         if v === nothing
-            println(io, "# ", key(k), " = null  (в TOML нет null — ключ пропущен)")
+            println(io, "# ", key(k), " = null  (в TOML нет null - ключ пропущен)")
         elseif !(v isa OMap) && !is_table_array(v)
             println(io, key(k), " = ", toml_value(v))
         end
@@ -315,7 +315,7 @@ function main(args)
         println(stderr, "Ошибка YAML ($input, строка $(e.line)): $(e.msg)")
         exit(1)
     end
-    data isa OMap || (println(stderr, "Корень YAML должен быть словарём: TOML-документ — это всегда таблица"); exit(1))
+    data isa OMap || (println(stderr, "Корень YAML должен быть словарём: TOML-документ - это всегда таблица"); exit(1))
 
     io = IOBuffer()
     try
