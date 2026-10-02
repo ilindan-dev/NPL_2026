@@ -5,8 +5,8 @@
 # каждому результат (победа / поражение / ничья) и закрывает соединение.
 #
 # Запуск:  ruby rps.rb server [порт]
-#          ruby rps.rb client [хост] [порт]          — играть с клавиатуры
-#          ruby rps.rb client [хост] [порт] --bot    — бот, ходит случайно
+#          ruby rps.rb client [хост] [порт]          - играть с клавиатуры
+#          ruby rps.rb client [хост] [порт] --bot    - бот, ходит случайно
 # Только стандартная библиотека (socket, Thread, Queue).
 
 require 'socket'
@@ -32,7 +32,7 @@ def parse_move(text)
   MOVES.find { |_, aliases| aliases.include?(word) }&.first
 end
 
-# :win / :lose / :draw — с точки зрения игрока с ходом `mine`
+# :win / :lose / :draw - с точки зрения игрока с ходом `mine`
 def outcome(mine, theirs)
   return :draw if mine == theirs
   BEATS[mine] == theirs ? :win : :lose
@@ -42,7 +42,7 @@ end
 # Сервер
 # ---------------------------------------------------------------------------
 
-# Читаем ход игрока; до 3 попыток на неверный ввод. nil — игрок отключился.
+# Читаем ход игрока; до 3 попыток на неверный ввод. nil - игрок отключился.
 def read_move(sock)
   3.times do
     line = sock.gets or return nil
@@ -66,7 +66,7 @@ rescue IOError, SystemCallError
   false
 end
 
-# Отправка без исключений: false — клиент уже отключился.
+# Отправка без исключений: false - клиент уже отключился.
 def send_line(player, msg)
   player[:sock].puts(msg)
   true
@@ -86,9 +86,9 @@ def play(room, players, waiting)
   players.each { |p| drain(p[:sock]) }
   sent = players.each_with_index.map do |p, i|
     send_line(p, "Соперник найден: #{players[1 - i][:name]}. Комната ##{room}.") &&
-      send_line(p, 'Ваш ход — камень / ножницы / бумага (к/н/б):')
+      send_line(p, 'Ваш ход - камень / ножницы / бумага (к/н/б):')
   end
-  # Кто-то отвалился до начала игры — живого игрока возвращаем в очередь
+  # Кто-то отвалился до начала игры - живого игрока возвращаем в очередь
   unless sent.all?
     players.each_with_index do |p, i|
       next unless sent[i]
@@ -143,7 +143,7 @@ def run_server(port)
         next
       end
       room += 1
-      Thread.new(room) { |r| play(r, [first, second], waiting) }   # каждая комната — свой поток
+      Thread.new(room) { |r| play(r, [first, second], waiting) }   # каждая комната - свой поток
     end
   end
 
@@ -172,7 +172,7 @@ def run_client(host, port, bot)
   loop do
     ready, = IO.select(inputs)
     if ready.include?(sock)
-      line = sock.gets or break             # nil — сервер закрыл соединение
+      line = sock.gets or break             # nil - сервер закрыл соединение
       puts line
       if bot && line.include?('Ваш ход')
         sleep(rand(0.5..2.0))
@@ -188,7 +188,7 @@ def run_client(host, port, bot)
   end
   puts 'Соединение закрыто.'
 rescue Errno::ECONNREFUSED
-  puts "Не удалось подключиться к #{host}:#{port} — сервер запущен?"
+  puts "Не удалось подключиться к #{host}:#{port} - сервер запущен?"
   exit 1
 rescue IOError, SystemCallError
   puts 'Соединение закрыто сервером.'
