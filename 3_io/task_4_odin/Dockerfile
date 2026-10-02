@@ -1,5 +1,5 @@
 # Официального образа Odin нет, поэтому компилятор собирается из исходников
-# (фиксированный релиз dev-2024-12) — это делается один раз, дальше берётся из кэша.
+# (фиксированный релиз dev-2024-12) - это делается один раз, дальше берётся из кэша.
 FROM ubuntu:24.04 AS build
 RUN apt-get update && apt-get install -y --no-install-recommends \
         clang llvm-dev git make ca-certificates \
@@ -13,5 +13,5 @@ RUN odin build vault.odin -file -o:speed -out:vault
 
 FROM ubuntu:24.04
 COPY --from=build /src/vault /usr/local/bin/vault
-# Рабочую папку задаёт run.sh (репозиторий монтируется в /work) — vault.txt появится там
+# Рабочую папку задаёт run.sh (репозиторий монтируется в /work) - vault.txt появится там
 ENTRYPOINT ["vault"]

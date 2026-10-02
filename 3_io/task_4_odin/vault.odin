@@ -5,7 +5,7 @@
 // вместе с именем сервиса в файл-хранилище vault.txt, каждая запись закодирована в Base64.
 //
 // Режимы:
-//   vault                                  — интерактивное меню
+//   vault                                  - интерактивное меню
 //   vault gen <сервис> [длина] [--no-digits] [--no-special]
 //   vault list
 //
@@ -57,11 +57,11 @@ generate :: proc(length: int, use_digits, use_special: bool) -> (string, int) {
 	alphabet := strings.concatenate(classes[:], context.temp_allocator)
 
 	buf := make([]u8, length)
-	// по одному символу из каждого класса — требования гарантированно выполнены
+	// по одному символу из каждого класса - требования гарантированно выполнены
 	for cls, i in classes {
 		buf[i] = cls[random_index(len(cls))]
 	}
-	// остальные — из общего алфавита
+	// остальные - из общего алфавита
 	for i in len(classes) ..< length {
 		buf[i] = alphabet[random_index(len(alphabet))]
 	}
