@@ -21,7 +21,7 @@ use Encode qw(decode);
 binmode STDOUT, ':encoding(UTF-8)';
 binmode STDERR, ':encoding(UTF-8)';
 
-# Имена файлов из ФС — байты; для вывода декодируем их как UTF-8.
+# Имена файлов из ФС - байты; для вывода декодируем их как UTF-8.
 sub disp { decode('UTF-8', $_[0], Encode::FB_DEFAULT) }
 
 my ($show_all, $dirs_only, $max_depth, $show_size, $out_file, $no_color) = (0, 0, undef, 0, undef, 0);
@@ -44,7 +44,7 @@ my %C = $use_color
     : (dir => '', exe => '', link => '', reset => '');
 
 my ($n_dirs, $n_files) = (0, 0);
-my @plain;   # строки без цветов — для сохранения в файл
+my @plain;   # строки без цветов - для сохранения в файл
 
 emit($C{dir} . disp($root) . $C{reset}, disp($root));
 walk($root, '', 1);
@@ -63,7 +63,7 @@ if (defined $out_file) {
 
 # --------------------------------------------------------------------------
 
-# Рекурсивный обход: $prefix — накопленные "│   " / "    " от родителей.
+# Рекурсивный обход: $prefix - накопленные "│   " / "    " от родителей.
 sub walk {
     my ($dir, $prefix, $depth) = @_;
     return if defined $max_depth && $depth > $max_depth;
@@ -74,7 +74,7 @@ sub walk {
 
     @entries = grep { !/^\./ } @entries unless $show_all;
     @entries = grep { -d File::Spec->catfile($dir, $_) } @entries if $dirs_only;
-    # Сначала папки, потом файлы; внутри — по алфавиту без учёта регистра
+    # Сначала папки, потом файлы; внутри - по алфавиту без учёта регистра
     @entries = sort {
         my $da = -d File::Spec->catfile($dir, $a) ? 0 : 1;
         my $db = -d File::Spec->catfile($dir, $b) ? 0 : 1;
