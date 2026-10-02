@@ -1,4 +1,4 @@
-# Objective-C вне macOS — это GCC + библиотека GNUstep Base (открытая реализация Foundation)
+# Objective-C вне macOS - это GCC + библиотека GNUstep Base (открытая реализация Foundation)
 FROM debian:bookworm-slim
 RUN apt-get update && apt-get install -y --no-install-recommends \
         gobjc gnustep-make libgnustep-base-dev \

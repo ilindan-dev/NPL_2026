@@ -16,7 +16,7 @@
  *   gcc $(gnustep-config --objc-flags) md2html.m -o md2html $(gnustep-config --base-libs)
  * Запуск: ./md2html <вход.md> [выход.html]
  *
- * Код без ARC и без литералов @[] @{} — так он собирается и gcc, и clang.
+ * Код без ARC и без литералов @[] @{} - так он собирается и gcc, и clang.
  */
 #import <Foundation/Foundation.h>
 #include <stdio.h>
@@ -67,7 +67,7 @@ static NSString *escapeHTML(NSString *s)
     return s;
 }
 
-/* Есть ли дальше закрывающий маркер — чтобы одиночная '*' (2 * 3) не открывала курсив */
+/* Есть ли дальше закрывающий маркер - чтобы одиночная '*' (2 * 3) не открывала курсив */
 static BOOL hasCloser(NSString *s, NSUInteger from, NSString *marker)
 {
     if (from >= [s length]) return NO;
@@ -165,7 +165,7 @@ static BOOL hasCloser(NSString *s, NSUInteger from, NSString *marker)
     }
 }
 
-/* Уровень заголовка: число '#' (1..6), за которыми пробел; 0 — не заголовок */
+/* Уровень заголовка: число '#' (1..6), за которыми пробел; 0 - не заголовок */
 static int headerLevel(NSString *line)
 {
     NSUInteger i = 0, n = [line length];
@@ -174,7 +174,7 @@ static int headerLevel(NSString *line)
     return 0;
 }
 
-/* Длина префикса нумерованного пункта "12. "; 0 — не пункт */
+/* Длина префикса нумерованного пункта "12. "; 0 - не пункт */
 static NSUInteger orderedPrefix(NSString *line)
 {
     NSUInteger i = 0, n = [line length];
@@ -216,7 +216,7 @@ static NSUInteger orderedPrefix(NSString *line)
             continue;
         }
 
-        /* пустая строка — граница абзаца */
+        /* пустая строка - граница абзаца */
         if ([trimmed length] == 0) {
             [self flushParagraph];
             [self closeList];
@@ -264,7 +264,7 @@ static NSUInteger orderedPrefix(NSString *line)
             continue;
         }
 
-        /* обычный текст — копим строки абзаца до пустой строки */
+        /* обычный текст - копим строки абзаца до пустой строки */
         [self closeList];
         [paragraph addObject:trimmed];
     }
