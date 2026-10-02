@@ -301,7 +301,7 @@ json({object, Pairs}, Ind) ->
 json({array, []}, _) -> "[]";
 json({array, Items}, Ind) ->
     case lists:any(fun({object, _}) -> true; (_) -> false end, Items) of
-        false ->                                            % простые значения — в одну строку
+        false ->                                            % простые значения - в одну строку
             ["[", lists:join(", ", [json(I, Ind) || I <- Items]), "]"];
         true ->
             Pad = lists:duplicate(Ind + 2, $\s),
