@@ -1,11 +1,11 @@
 //! Задача 3.3 (Zig): консольный Pomodoro-таймер с логированием сессий.
 //!
 //! В консоли идёт обратный отсчёт: строка перерисовывается на месте через '\r'.
-//! По окончании работы — звуковой сигнал ('\a', BEL) и в файл stats.txt
-//! дописывается дата и длительность сессии. В конце — сводка по всему файлу.
+//! По окончании работы - звуковой сигнал ('\a', BEL) и в файл stats.txt
+//! дописывается дата и длительность сессии. В конце - сводка по всему файлу.
 //!
 //! Запуск:  pomodoro [работа] [перерыв] [циклов]
-//!          длительность: 25m, 90s, 1h (без суффикса — минуты)
+//!          длительность: 25m, 90s, 1h (без суффикса - минуты)
 //!          по умолчанию: 25m 5m 1
 //! Написано под Zig 0.13.0.
 
@@ -34,7 +34,7 @@ fn countdown(w: anytype, label: []const u8, total: u32) !void {
     while (true) {
         const done = total - left;
         const filled = if (total == 0) width else done * width / total;
-        // '\r' возвращает курсор в начало строки — так строка обновляется на месте
+        // '\r' возвращает курсор в начало строки - так строка обновляется на месте
         try w.print("\r  {s}  {d:0>2}:{d:0>2}  [", .{ label, left / 60, left % 60 });
         var i: u32 = 0;
         while (i < width) : (i += 1) try w.writeByte(if (i < filled) '#' else '-');
@@ -54,7 +54,7 @@ fn appendStats(label: []const u8, seconds: u32) !void {
     const md = yd.calculateMonthDay();
     const ds = es.getDaySeconds();
 
-    // truncate = false: файл не перезаписывается; если его нет — создаётся
+    // truncate = false: файл не перезаписывается; если его нет - создаётся
     const file = try std.fs.cwd().createFile(stats_file, .{ .truncate = false });
     defer file.close();
     try file.seekFromEnd(0);
@@ -94,7 +94,7 @@ fn printSummary(alloc: std.mem.Allocator, w: anytype) !void {
 fn usage(w: anytype) !void {
     try w.writeAll(
         \\Использование: pomodoro [работа] [перерыв] [циклов]
-        \\  длительность: 25m, 90s, 1h (без суффикса — минуты)
+        \\  длительность: 25m, 90s, 1h (без суффикса - минуты)
         \\  пример для демонстрации: pomodoro 10s 5s 2
         \\
     );
@@ -126,7 +126,7 @@ pub fn main() !void {
         try out.print("Цикл {d}/{d}\n", .{ c, cycles });
         try countdown(out, "Работа ", work);
         try appendStats("работа", work);
-        // '\x07' — символ BEL: терминал издаёт звуковой сигнал
+        // '\x07' - символ BEL: терминал издаёт звуковой сигнал
         try out.writeAll("\x07  Время вышло! Сессия записана в stats.txt\n");
 
         if (c < cycles) {

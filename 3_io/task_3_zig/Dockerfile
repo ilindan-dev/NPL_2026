@@ -9,7 +9,7 @@ WORKDIR /src
 COPY pomodoro.zig .
 RUN zig build-exe pomodoro.zig -O ReleaseSafe
 
-# Zig собирает статический бинарник — в итоговом образе только он
+# Zig собирает статический бинарник - в итоговом образе только он
 FROM debian:bookworm-slim
 COPY --from=build /src/pomodoro /usr/local/bin/pomodoro
 # Рабочую папку задаёт run.sh (репозиторий монтируется в /work)
