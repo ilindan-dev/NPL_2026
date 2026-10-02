@@ -6,7 +6,7 @@
 --
 -- Запуск:  lua weather.lua server [порт]
 --          lua weather.lua client [хост] [порт] [город ...]
---          (без городов — интерактивный режим)
+--          (без городов - интерактивный режим)
 
 local socket = require("socket")
 local unpack = table.unpack or unpack
@@ -87,7 +87,7 @@ local function run_server(port)
           names[c] = "клиент#" .. counter
           table.insert(clients, c)
           log("%s подключился, клиентов: %d", names[c], #clients)
-          c:send("Сервер погоды. Отправьте название города (QUIT — выход)\n")
+          c:send("Сервер погоды. Отправьте название города (QUIT - выход)\n")
         end
       else
         local line = s:receive("*l")
