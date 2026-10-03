@@ -37,3 +37,6 @@ type Tree =
 
 `fromLevelOrder` строит дерево из массива в формате LeetCode (`[3,5,1,6,2,0,8,null,null,7,4]`).
 `printTree` рисует дерево «на боку».
+
+Ссылка на видео:
+https://drive.google.com/file/d/155APJ7LfkwUZfVGPE6DetE8QhjbXmZUq/view?usp=sharing
