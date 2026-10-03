@@ -30,3 +30,6 @@
 
 Задачи создаются через `new Worker (I)` и стартуют сразу. Процедура `Life`
 автоматически ждёт завершения всех своих задач.
+
+## Ссылка на видео:
+https://drive.google.com/file/d/137WopBqKinw3zMf0TYfg52jamA0FW8rG/view?usp=sharing
