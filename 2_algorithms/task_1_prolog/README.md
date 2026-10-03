@@ -30,3 +30,6 @@
 
 Для самопроверки программа сравнивает количество ответов с числом Каталана
 `C(n) = (2n)! / ((n+1)! · n!)` для `n = 1..8`.
+
+## Ссылка на видео:
+https://drive.google.com/file/d/1kAPmIn9CA2GpEoo4NBxLHkSBlnv-yvmd/view?usp=sharing
