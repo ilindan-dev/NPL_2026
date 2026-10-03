@@ -33,3 +33,6 @@ nums
 способа дали одно и то же.
 
 Для наглядности в выводе показаны промежуточные шаги: частоты → сортировка → первые k.
+
+## Ссылка на видео:
+https://drive.google.com/file/d/1FtSfNbeJswnX7UbtvFBDFZAHYdONb77c/view?usp=sharing
