@@ -54,3 +54,6 @@
 
 **Мост Swift ↔ C.** `sockaddr_in` приводится к `sockaddr` через `withMemoryRebound`, порт
 переводится в сетевой порядок байт через `.bigEndian`. Это обычная работа с C API из Swift.
+
+## Ссылка на видео:
+https://drive.google.com/file/d/16tAbrIjwZbkUGOchV2aN1YKhNgNgr7RO/view?usp=sharing
