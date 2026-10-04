@@ -34,3 +34,6 @@ cat 3_io/task_2_groovy/error.log
 - **`checkValue`** - `switch` по типу правила. Возвращает текст ошибки или `null`.
 - **Отчёт**: `File.append(...)` дописывает в `error.log` блок «[дата] файл: ошибок N» и список ошибок.
 - Код выхода 1, если есть ошибки. Это удобно для скриптов и CI.
+
+## Ссылка на видео:
+https://drive.google.com/file/d/1JouyOZsRSPTs5p56mv2q0-PK-QiqiUF-/view?usp=sharing
