@@ -1,0 +1,33 @@
+{
+  "library": "Городская библиотека №1",
+  "founded": 1957,
+  "rating": 4.8,
+  "open": true,
+  "address": {
+    "city": "Москва",
+    "street": "ул. Ленина, 10",
+    "geo": { "lat": 55.7558, "lon": 37.6173 }
+  },
+  "books": [
+    {
+      "id": 1,
+      "title": "Война и мир",
+      "authors": ["Лев Толстой"],
+      "tags": ["классика", "роман"],
+      "available": true
+    },
+    {
+      "id": 2,
+      "title": "Structure & Interpretation of <Computer> Programs",
+      "authors": ["Harold Abelson", "Gerald Jay Sussman"],
+      "tags": [],
+      "available": false,
+      "note": null
+    }
+  ],
+  "first name": "ключ с пробелом",
+  "2fa": "ключ начинается с цифры",
+  "escapes": "кавычки \"внутри\", перенос\nстроки, юникод é и эмодзи 📚",
+  "matrix": [[1, 2], [3, 4]],
+  "empty": {}
+}
