@@ -50,3 +50,6 @@ xdg-open 5_convert/task_3_objc/examples/sample.html                     # отк
 
 Память управляется вручную (`retain`/`release`, `NSAutoreleasePool`), без ARC: так код
 собирается и GCC, и clang.
+
+## Ссылка на видео:
+https://drive.google.com/file/d/1TyeCZ6hmN3kazQ41rPCEgfKPdSANHOxp/view?usp=sharing
