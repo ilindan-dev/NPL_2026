@@ -28,7 +28,9 @@ def log(msg)
 end
 
 def parse_move(text)
-  word = text.to_s.strip.downcase
+  # scrub: выбрасываем битые байты. Например, Backspace по русской букве в терминале
+  # без режима iutf8 стирает только половину символа, и приходит невалидный UTF-8.
+  word = text.to_s.dup.force_encoding(Encoding::UTF_8).scrub('').strip.downcase
   MOVES.find { |_, aliases| aliases.include?(word) }&.first
 end
 
@@ -164,6 +166,8 @@ end
 # ---------------------------------------------------------------------------
 
 def run_client(host, port, bot)
+  # Чтобы Backspace стирал русскую букву целиком, а не один её байт
+  system('stty', 'iutf8', err: File::NULL) if $stdin.tty?
   sock = TCPSocket.new(host, port)
   sock.set_encoding(Encoding::UTF_8)
   inputs = bot ? [sock] : [sock, $stdin]
