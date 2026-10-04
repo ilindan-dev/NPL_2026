@@ -48,3 +48,6 @@ QUIT
 - главный поток читает клавиатуру и отправляет строки на сервер.
 
 **Протокол** - текстовый, построчный (`readLine`/`println`), кодировка UTF-8.
+
+## Ссылка на видео:
+https://drive.google.com/file/d/19iwX5QVTCo_K4QhN9SgqP3R3oBdWuWPa/view?usp=sharing
