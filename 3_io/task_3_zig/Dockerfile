@@ -1,13 +1,11 @@
-FROM debian:bookworm-slim AS build
-RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates xz-utils \
-    && rm -rf /var/lib/apt/lists/*
-ARG ZIG=0.13.0
-RUN arch="$(uname -m)" \
-    && curl -fsSL "https://ziglang.org/download/${ZIG}/zig-linux-${arch}-${ZIG}.tar.xz" | tar -xJ -C /opt \
-    && ln -s "/opt/zig-linux-${arch}-${ZIG}/zig" /usr/local/bin/zig
+# Компилятор Zig 0.13.0 ставится из PyPI (пакет ziglang - официальная сборка Zig,
+# упакованная в wheel). PyPI раздаётся через CDN, поэтому загрузка быстрая и стабильная,
+# в отличие от ziglang.org, который часто отдаёт архив очень медленно.
+FROM python:3.12-slim AS build
+RUN pip install --no-cache-dir ziglang==0.13.0
 WORKDIR /src
 COPY pomodoro.zig .
-RUN zig build-exe pomodoro.zig -O ReleaseSafe
+RUN python -m ziglang build-exe pomodoro.zig -O ReleaseSafe
 
 # Zig собирает статический бинарник - в итоговом образе только он
 FROM debian:bookworm-slim
