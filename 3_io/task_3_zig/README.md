@@ -36,3 +36,6 @@ cat 3_io/task_3_zig/stats.txt
   разбор секунд из последнего поля.
 - Память: аллокатор `GeneralPurposeAllocator`, всё освобождается через `defer`.
   В Debug-сборке GPA сообщает об утечках.
+
+## Ссылка на видео:
+https://drive.google.com/file/d/1rwS-0qunl_n0nzRXJ47TJtVC-ffbzGe4/view?usp=sharing
