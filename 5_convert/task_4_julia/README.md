@@ -58,3 +58,6 @@ workers:
 
 **3. Самопроверка.** Результат читается обратно стандартным парсером `TOML.parse` из
 библиотеки Julia и сравнивается с исходными данными.
+
+## Ссылка на видео:
+https://drive.google.com/file/d/1K6mTQjcpYjAG7qtYugQSeW56cj5uU8nd/view?usp=sharing
