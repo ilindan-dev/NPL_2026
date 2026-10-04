@@ -45,3 +45,6 @@ OK Москва: +12°C, дождь, ветер 5 м/с, влажность 80%
   не чаще раза в минуту.
 
 **Клиент** - `socket.connect`, затем либо города из аргументов, либо цикл чтения с клавиатуры.
+
+## Ссылка на видео:
+https://drive.google.com/file/d/1o_Q3W39tKr7zIsndawnrsauAo2JQf2HH/view?usp=sharing
