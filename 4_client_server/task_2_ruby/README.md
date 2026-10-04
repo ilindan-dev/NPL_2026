@@ -39,3 +39,6 @@
 
 **Клиент** - один поток с `IO.select`: ждёт данных одновременно от сервера и с клавиатуры.
 В режиме `--bot` на приглашение «Ваш ход» сам отвечает случайным ходом.
+
+## Ссылка на видео:
+https://drive.google.com/file/d/1erxXDwFq_Hoo-ZpmhGbUCtsZHEbzq-qT/view?usp=sharing
