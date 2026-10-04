@@ -264,6 +264,14 @@ func runClient(host: String, port: UInt16, command: String?) {
 
 // ---------------------------------------------------------------------------
 
+// Ctrl+C и docker stop: завершаемся явно. В контейнере программа может оказаться процессом
+// с PID 1, а такой процесс ядро не завершает по сигналу, если для него нет обработчика.
+func onStopSignal(_ sig: Int32) {
+    _exit(0)          // в обработчике сигнала можно вызывать только простые системные функции
+}
+signal(SIGINT, onStopSignal)
+signal(SIGTERM, onStopSignal)
+
 let args = CommandLine.arguments
 switch args.count > 1 ? args[1] : "" {
 case "server":
