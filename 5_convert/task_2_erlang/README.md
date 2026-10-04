@@ -50,3 +50,6 @@ last_login_ms: 1790000000000              "isActive": true,
 
 Ошибки бросаются через `throw({error, Строка, Текст})` и ловятся в `main`. Пользователь
 видит файл, строку и понятную причину.
+
+## Ссылка на видео:
+https://drive.google.com/file/d/1Wacwe6DK1KO11hMHqLRuJLrPOwsYGnkX/view?usp=sharing
