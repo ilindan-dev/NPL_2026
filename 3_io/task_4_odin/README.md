@@ -39,3 +39,6 @@ cat 3_io/task_4_odin/vault.txt                           # как оно леж�
   `list` читает файл, декодирует каждую строку и печатает таблицу.
 - Память: временные строки создаются в `context.temp_allocator`, который очищается
   `free_all` после каждой команды меню.
+
+# Ссылка на видео:
+https://drive.google.com/file/d/1zdCHHlkgcjB7ls5CkBpHXYKYvKWfGtoE/view?usp=sharing
